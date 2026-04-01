@@ -154,15 +154,13 @@ class ITGlueClient {
     });
 
     if (!response.ok) {
-      const errorBody = await response.text();
-      throw new Error(`IT Glue API error (${response.status}): ${errorBody}`);
+      throw new Error(`IT Glue API error (${response.status}): Request failed`);
     }
 
     const json = (await response.json()) as JsonApiResponse;
 
     if (json.errors && json.errors.length > 0) {
-      const errorMessages = json.errors.map((e) => e.detail || e.title).join(", ");
-      throw new Error(`IT Glue API error: ${errorMessages}`);
+      throw new Error(`IT Glue API error: The request could not be completed`);
     }
 
     const data = Array.isArray(json.data)
@@ -199,15 +197,13 @@ class ITGlueClient {
     });
 
     if (!response.ok) {
-      const errorBody = await response.text();
-      throw new Error(`IT Glue API error (${response.status}): ${errorBody}`);
+      throw new Error(`IT Glue API error (${response.status}): Request failed`);
     }
 
     const json = (await response.json()) as JsonApiResponse;
 
     if (json.errors && json.errors.length > 0) {
-      const errorMessages = json.errors.map((e) => e.detail || e.title).join(", ");
-      throw new Error(`IT Glue API error: ${errorMessages}`);
+      throw new Error(`IT Glue API error: The request could not be completed`);
     }
 
     const resource = Array.isArray(json.data) ? json.data[0] : json.data;
@@ -228,15 +224,13 @@ class ITGlueClient {
     });
 
     if (!response.ok) {
-      const errorBody = await response.text();
-      throw new Error(`IT Glue API error (${response.status}): ${errorBody}`);
+      throw new Error(`IT Glue API error (${response.status}): Request failed`);
     }
 
     const json = (await response.json()) as JsonApiResponse;
 
     if (json.errors && json.errors.length > 0) {
-      const errorMessages = json.errors.map((e) => e.detail || e.title).join(", ");
-      throw new Error(`IT Glue API error: ${errorMessages}`);
+      throw new Error(`IT Glue API error: The request could not be completed`);
     }
 
     const resource = Array.isArray(json.data) ? json.data[0] : json.data;
@@ -255,8 +249,7 @@ class ITGlueClient {
     });
 
     if (!response.ok) {
-      const errorBody = await response.text();
-      throw new Error(`IT Glue API error (${response.status}): ${errorBody}`);
+      throw new Error(`IT Glue API error (${response.status}): Request failed`);
     }
   }
 }
@@ -948,7 +941,7 @@ server.setRequestHandler(CallToolRequestSchema, async (request) => {
             isError: true,
           };
         }
-        const showPassword = args?.show_password !== false;
+        const showPassword = args?.show_password === true;
         const password = await client.get(`/passwords/${args.id}`, {
           show_password: showPassword,
         });
@@ -1274,6 +1267,9 @@ async function startStdioTransport(): Promise<void> {
  */
 async function startHttpTransport(): Promise<void> {
   const port = parseInt(process.env.MCP_HTTP_PORT || "8080", 10);
+  if (isNaN(port) || port < 1 || port > 65535) {
+    throw new Error(`Invalid port: ${process.env.MCP_HTTP_PORT}. Must be between 1 and 65535.`);
+  }
   const host = process.env.MCP_HTTP_HOST || "0.0.0.0";
   const isGatewayMode = process.env.AUTH_MODE === "gateway";
 
@@ -1330,11 +1326,29 @@ async function startHttpTransport(): Promise<void> {
 
         const baseUrl = headers["x-itglue-base-url"] as string | undefined;
         if (baseUrl) {
-          process.env.ITGLUE_BASE_URL = baseUrl;
+          try {
+            const parsed = new URL(baseUrl);
+            if (parsed.protocol !== "https:" || !parsed.hostname.endsWith("itglue.com")) {
+              res.writeHead(400, { "Content-Type": "application/json" });
+              res.end(JSON.stringify({ error: "Invalid base URL. Must be an HTTPS itglue.com domain." }));
+              return;
+            }
+            process.env.ITGLUE_BASE_URL = baseUrl;
+          } catch {
+            res.writeHead(400, { "Content-Type": "application/json" });
+            res.end(JSON.stringify({ error: "Invalid base URL format." }));
+            return;
+          }
         }
 
+        const VALID_REGIONS = ["us", "eu", "au"];
         const region = headers["x-itglue-region"] as string | undefined;
         if (region) {
+          if (!VALID_REGIONS.includes(region)) {
+            res.writeHead(400, { "Content-Type": "application/json" });
+            res.end(JSON.stringify({ error: `Invalid region. Must be one of: ${VALID_REGIONS.join(", ")}` }));
+            return;
+          }
           process.env.ITGLUE_REGION = region;
         }
       }
