@@ -1,0 +1,162 @@
+## [1.5.2](https://github.com/wyre-technology/itglue-mcp/compare/v1.5.1...v1.5.2) (2026-03-31)
+
+
+### Bug Fixes
+
+* **deploy:** replace node_compat with nodejs_compat for Wrangler v4 ([b9d580d](https://github.com/wyre-technology/itglue-mcp/commit/b9d580d2e2d9b0848256c0c0146e988bbb92fe95))
+
+## [1.5.1](https://github.com/wyre-technology/itglue-mcp/compare/v1.5.0...v1.5.1) (2026-03-25)
+
+
+### Bug Fixes
+
+* **tools:** add document folder ID filter to search_documents ([747c448](https://github.com/wyre-technology/itglue-mcp/commit/747c448a027bf9d17dcb48e031a45c0122f1d035)), closes [wyre-technology/msp-claude-plugins#40](https://github.com/wyre-technology/msp-claude-plugins/issues/40)
+
+# [1.5.0](https://github.com/wyre-technology/itglue-mcp/compare/v1.4.0...v1.5.0) (2026-03-10)
+
+
+### Features
+
+* **elicitation:** add MCP elicitation support with graceful fallback ([#2](https://github.com/wyre-technology/itglue-mcp/issues/2)) ([a134ce7](https://github.com/wyre-technology/itglue-mcp/commit/a134ce7e6c55bf7a738e14c0464f22190bfe2a24))
+
+# [1.4.0](https://github.com/wyre-technology/itglue-mcp/compare/v1.3.0...v1.4.0) (2026-03-09)
+
+
+### Features
+
+* **tools:** add Document Sections API tools ([#1](https://github.com/wyre-technology/itglue-mcp/issues/1)) ([61c6bcf](https://github.com/wyre-technology/itglue-mcp/commit/61c6bcf14a114724b32e76185ea197f645428b3f)), closes [wyre-technology/msp-claude-plugins#34](https://github.com/wyre-technology/msp-claude-plugins/issues/34)
+
+# [1.3.0](https://github.com/wyre-technology/itglue-mcp/compare/v1.2.8...v1.3.0) (2026-03-05)
+
+
+### Features
+
+* **tools:** add list_flexible_asset_types tool ([c0b4831](https://github.com/wyre-technology/itglue-mcp/commit/c0b4831a2e71acf28d8712e6fc49accfecc76516))
+
+## [1.2.8](https://github.com/wyre-technology/itglue-mcp/compare/v1.2.7...v1.2.8) (2026-03-05)
+
+
+### Bug Fixes
+
+* **documents:** revert to correct /relationships/documents endpoint + 404 error guidance ([f4f973d](https://github.com/wyre-technology/itglue-mcp/commit/f4f973d3a87d65fcc80027c39250438003c763e4))
+
+## [1.2.7](https://github.com/wyre-technology/itglue-mcp/compare/v1.2.6...v1.2.7) (2026-03-05)
+
+
+### Bug Fixes
+
+* **documents:** use top-level /documents endpoint instead of /relationships path ([09b1671](https://github.com/wyre-technology/itglue-mcp/commit/09b1671297c1d1c7ebcc20b0879a2d99209c9768))
+
+## [1.2.6](https://github.com/wyre-technology/itglue-mcp/compare/v1.2.5...v1.2.6) (2026-03-04)
+
+
+### Bug Fixes
+
+* grant contents:write to Docker job for release asset upload ([550fdd6](https://github.com/wyre-technology/itglue-mcp/commit/550fdd6eba84a39d5dadc0647ce503a50a30dc2f))
+
+## [1.2.5](https://github.com/wyre-technology/itglue-mcp/compare/v1.2.4...v1.2.5) (2026-03-04)
+
+
+### Bug Fixes
+
+* strip org scope from MCPB bundle filename ([66f2479](https://github.com/wyre-technology/itglue-mcp/commit/66f2479a93066d2a015e24dc3c77a37dffd41488))
+
+## [1.2.4](https://github.com/wyre-technology/itglue-mcp/compare/v1.2.3...v1.2.4) (2026-03-04)
+
+
+### Bug Fixes
+
+* install dependencies before build in pack-mcpb.cjs ([5243ffb](https://github.com/wyre-technology/itglue-mcp/commit/5243ffb149d22ac1da64ff0b14e8b26115dc47ea))
+
+## [1.2.3](https://github.com/wyre-technology/itglue-mcp/compare/v1.2.2...v1.2.3) (2026-03-04)
+
+
+### Bug Fixes
+
+* exclude test files from TypeScript compilation ([c5765ca](https://github.com/wyre-technology/itglue-mcp/commit/c5765cadcbfadcc9be3999f7566eea6b7982e9e9))
+
+## [1.2.2](https://github.com/wyre-technology/itglue-mcp/compare/v1.2.1...v1.2.2) (2026-03-04)
+
+
+### Bug Fixes
+
+* correct pack-mcpb.cjs content (was corrupted in previous upload) ([889360b](https://github.com/wyre-technology/itglue-mcp/commit/889360b754b00150f4ba0cf33c0b0322d683c19b))
+
+## [1.2.1](https://github.com/wyre-technology/itglue-mcp/compare/v1.2.0...v1.2.1) (2026-03-04)
+
+
+### Bug Fixes
+
+* remove old pack-mcpb.js (replaced by .cjs) ([20c5a85](https://github.com/wyre-technology/itglue-mcp/commit/20c5a85b9a2d6e3b3787693317cd3edc5710d378))
+* rename pack-mcpb.js to .cjs for ESM compatibility ([05aff3e](https://github.com/wyre-technology/itglue-mcp/commit/05aff3ed9b6db7207943d57b4227b34cb40c0002))
+* update pack:mcpb script to use .cjs extension ([cd94dff](https://github.com/wyre-technology/itglue-mcp/commit/cd94dff63a9d5f68bf82dbd2190ec7641abfd707))
+
+# [1.2.0](https://github.com/wyre-technology/itglue-mcp/compare/v1.1.2...v1.2.0) (2026-03-04)
+
+
+### Features
+
+* **documents:** add get_document and create_document tools ([e9fab21](https://github.com/wyre-technology/itglue-mcp/commit/e9fab21500619846da44c7a59fedc92a72b411ed))
+
+## [1.1.2](https://github.com/wyre-technology/itglue-mcp/compare/v1.1.1...v1.1.2) (2026-03-02)
+
+
+### Bug Fixes
+
+* **ci:** fix broken YAML in Discord notification step ([8764888](https://github.com/wyre-technology/itglue-mcp/commit/876488897cf293284a29d7b45f53b82bc4905b2c))
+* **ci:** move Discord notification into release workflow ([679cb92](https://github.com/wyre-technology/itglue-mcp/commit/679cb9275d660bcee6140083678073148dae84ed))
+
+## [1.1.1](https://github.com/wyre-technology/itglue-mcp/compare/v1.1.0...v1.1.1) (2026-02-23)
+
+
+### Bug Fixes
+
+* quote MCPB bundle filename to prevent shell glob expansion failure ([8047aa8](https://github.com/wyre-technology/itglue-mcp/commit/8047aa8c3e257bfdbe3d7e3cec60ea3cb666fb19))
+
+# [1.1.0](https://github.com/wyre-technology/itglue-mcp/compare/v1.0.0...v1.1.0) (2026-02-18)
+
+
+### Bug Fixes
+
+* **ci:** deduplicate step IDs and use Node 22 for semantic-release ([ff8b086](https://github.com/wyre-technology/itglue-mcp/commit/ff8b086f7945a0194b4a0f2dc12a32e47ee420ce))
+* **ci:** fix release workflow failures ([d0c4bc7](https://github.com/wyre-technology/itglue-mcp/commit/d0c4bc72b1a113b89cb4adb65bbe54ca41743dc5))
+* **docker:** drop arm64 platform to fix QEMU build failures ([fd96d07](https://github.com/wyre-technology/itglue-mcp/commit/fd96d07cf79dbe5aa795a1687e06ddb68401375d))
+* escape newlines in .releaserc.json message template ([741b678](https://github.com/wyre-technology/itglue-mcp/commit/741b67801d4b2020549d6afcd7580f7d96695fd0))
+* use correct org-scoped endpoint for search_documents ([b1be590](https://github.com/wyre-technology/itglue-mcp/commit/b1be59043a31ed2994ff740d59e4f2b993bf67f7))
+* use stateless per-request server pattern for HTTP transport ([a28d4e1](https://github.com/wyre-technology/itglue-mcp/commit/a28d4e195d47db1879f5a969d5e23fdba8fb8182))
+
+
+### Features
+
+* add HTTP transport + gateway auth mode support ([01da61f](https://github.com/wyre-technology/itglue-mcp/commit/01da61f7c55e8159224b15a35fcc3f14b701a254))
+* add MCPB manifest for desktop installation ([6309e69](https://github.com/wyre-technology/itglue-mcp/commit/6309e691b3a56f447ff2a5fc3149acc6fec64a8c))
+* add MCPB pack script ([d5cd1ba](https://github.com/wyre-technology/itglue-mcp/commit/d5cd1baf58af14752041e6055e0faaf926724044))
+* add mcpb packaging support ([f5e7133](https://github.com/wyre-technology/itglue-mcp/commit/f5e7133b24dad56be55d308be4fda8c08cb6ca44))
+* add mcpb packaging support ([bb70b62](https://github.com/wyre-technology/itglue-mcp/commit/bb70b623269ec0c5157033b8039d8362147d312a))
+* add mcpb packaging support ([af26b49](https://github.com/wyre-technology/itglue-mcp/commit/af26b49335fae13091227ac148e5005828be1482))
+* add mcpb packaging support ([80ee82f](https://github.com/wyre-technology/itglue-mcp/commit/80ee82fea4e75f4619c2b266f66ce98c535e23c6))
+* add mcpb packaging support ([d9b36c8](https://github.com/wyre-technology/itglue-mcp/commit/d9b36c82102c98a771a359952b25de7178053f2d))
+
+# Changelog
+
+All notable changes to this project will be documented in this file.
+
+The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
+and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
+
+## [Unreleased]
+
+### Added
+- Initial MCP server implementation
+- Tool: `search_organizations` - Search organizations with filtering
+- Tool: `get_organization` - Get organization by ID
+- Tool: `search_configurations` - Search configurations/devices
+- Tool: `get_configuration` - Get configuration by ID
+- Tool: `search_passwords` - Search password entries (metadata only)
+- Tool: `get_password` - Get password with actual value
+- Tool: `search_documents` - Search documents
+- Tool: `search_flexible_assets` - Search flexible assets by type
+- Tool: `itglue_health_check` - API connectivity check
+- Docker support with multi-stage build
+- GitHub Actions CI/CD pipeline
+- Semantic release automation
