@@ -284,7 +284,7 @@ function createClient(credentials: GatewayCredentials): ITGlueClient {
  * Create a fresh MCP Server with all tool handlers registered.
  * Called per-request in HTTP (stateless) mode so each initialize gets a clean server.
  */
-function createMcpServer(): Server {
+export function createMcpServer(): Server {
   const server = new Server(
     {
       name: "itglue-mcp",

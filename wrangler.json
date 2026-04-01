@@ -1,6 +1,6 @@
 {
   "name": "itglue-mcp",
-  "main": "dist/index.js",
+  "main": "dist/worker.js",
   "compatibility_date": "2026-02-01",
   "compatibility_flags": ["nodejs_compat"]
 }
