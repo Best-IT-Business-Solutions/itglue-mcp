@@ -109,9 +109,9 @@ export default {
       );
     }
 
-    // MCP endpoint
+    // MCP endpoint – accept GET (SSE), POST (RPC), and DELETE (session close)
     if (url.pathname === "/mcp") {
-      if (request.method !== "POST") {
+      if (!["GET", "POST", "DELETE"].includes(request.method)) {
         return new Response(
           JSON.stringify({
             jsonrpc: "2.0",
@@ -171,7 +171,7 @@ export default {
         const nodeReq = await toNodeRequest(request);
         const { res: nodeRes, promise: responsePromise } = createNodeResponse();
 
-        transport.handleRequest(nodeReq, nodeRes);
+        await transport.handleRequest(nodeReq, nodeRes);
 
         const response = await responsePromise;
 
